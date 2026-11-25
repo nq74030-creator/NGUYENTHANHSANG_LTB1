@@ -2,6 +2,32 @@
 <?php
 $menus = ["Trang chủ", "Tin tức", "Liên hệ", "Giới thiệu"];
 $subjects = ["HTML", "CSS", "JavaScript", "PHP", "MySQL"];
+$students = [
+    [
+        "id" => "SV001",
+        "name" => "Nguyễn Văn An",
+        "gender" => "Nam",
+        "class" => "CNTT1"
+    ],
+    [
+        "id" => "SV002",
+        "name" => "Trần Thị Bình",
+        "gender" => "Nữ",
+        "class" => "CNTT2"
+    ],
+    [
+        "id" => "SV003",
+        "name" => "Lê Văn Cường",
+        "gender" => "Nam",
+        "class" => "CNTT1"
+    ],
+    [
+        "id"=> "SV004",
+        "name"=> "Pham Thi Dung",
+        "gender"=> "Nu",
+        "class"=> "CNTT3"
+    ]
+];
 ?>
 
 <!DOCTYPE html>
@@ -79,6 +105,45 @@ $subjects = ["HTML", "CSS", "JavaScript", "PHP", "MySQL"];
         .s1 li:hover {
             background: #cfe2ff;
             transform: translateX(5px);
+
+        }
+        .s2 {
+            width: 100%;
+            margin: 20px auto;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0,0.15);
+        }
+
+        .s2 h3 {
+            margin-bottom: 10px;
+        }
+
+        .s2 table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px auto;
+        }
+
+        .s2 th,
+        .s2 td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .s2 th {
+            background-color: #0d6efd;
+            color: white;
+        }
+
+        .s2 tbody tr:nth-child(odd) {
+            background-color: #f5f6f7;
+        }
+
+        .s2 tbody tr:hover {
+            background-color: #d9e7fa;
         }
     </style>
 </head>
@@ -106,6 +171,27 @@ $subjects = ["HTML", "CSS", "JavaScript", "PHP", "MySQL"];
             ?>
         </ul>
     </section>
-
+    <section class="s2">
+        <h3>Danh Sach Sinh Vien</h3>
+        <table>
+            <tr>
+                <th>STT</th>
+                <th>Ma So SV</th>
+                <th>Ho Ten</th>
+                <th>Gioi Tinh</th>
+                <th>Lop</th>
+            </tr>
+            <?php foreach ($students as $index => $student) { ?>
+            <tr>
+                <td><?=$index +1?></td>
+                <td><?=$student['id']?></td>
+                <td><?=$student['name']?></td>
+                <td><?=$student['gender']?></td>
+                <td><?=$student['class']?></td>
+            </tr>
+            <?php }
+            ?>
+        </table>
+    </section>
 </body>
 </html>
