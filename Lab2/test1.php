@@ -28,6 +28,26 @@ $students = [
         "class"=> "CNTT3"
     ]
 ];
+    $faculties = [
+        "Công nghệ thông tin",
+        "Quản trị kinh doanh",
+        "Kế toán",
+        "Ngôn ngữ Anh"
+        ];
+    $classes = [
+        "A1" => "CNTT1",
+        "A2" => "CNTT2",
+        "A3" => "CNTT3",
+        "A4" => "CNTT4"
+        ];
+    $genders = ["Nam", "Nữ", "Khác"];
+    $hobbies = [
+        "LT" => "Lập trình",
+        "DS" => "Đọc sách",
+        "AN" => "Âm nhạc",
+        "DL" => "Du lịch",
+        "TT" => "Thể thao"
+        ];
 ?>
 
 <!DOCTYPE html>
@@ -72,6 +92,7 @@ $students = [
 
         body {
             padding: 20px;
+            background: #f5f5f5;
         }
 
         .s1 {
@@ -145,6 +166,69 @@ $students = [
         .s2 tbody tr:hover {
             background-color: #d9e7fa;
         }
+
+
+
+
+
+
+
+        .s3 {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 25px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.15);
+        }
+
+        .s3 h3 {
+            text-align: center;
+            color: #0d6efd;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-group input[type="radio"],
+        .form-group input[type="checkbox"] {
+            margin-right: 5px;
+        }
+
+        .form-group .option {
+            display: inline-block;
+            margin-right: 15px;
+            margin-bottom: 8px;
+        }
+
+        button {
+            background: #0d6efd;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #084298;
+        }
     </style>
 </head>
 
@@ -193,5 +277,70 @@ $students = [
             ?>
         </table>
     </section>
+
+
+
+<section class="s3">
+
+    <h3>ĐĂNG KÝ THÔNG TIN SINH VIÊN</h3>
+
+    <form method="post">
+
+        <div class="form-group">
+            <label>Họ và tên:</label>
+            <input type="text" name="fullname" placeholder="Nhập họ và tên">
+        </div>
+
+        <div class="form-group">
+            <label>Chọn khoa:</label>
+            <select name="faculty">
+                <option value="">-- Chọn khoa --</option>
+                <?php foreach ($faculties as $faculty) { ?>
+                    <option value="<?= $faculty ?>">
+                        <?= $faculty ?>
+                    </option>
+                <?php } ?>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Chọn lớp:</label>
+            <select name="class">
+                <option value="">-- Chọn lớp --</option>
+                <?php foreach ($classes as $key => $class) { ?>
+                    <option value="<?= $key ?>">
+                        <?= $class ?>
+                    </option>
+                <?php } ?>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Giới tính:</label>
+            <?php foreach ($genders as $gender) { ?>
+                <label class="option">
+                    <input type="radio" name="gender" value="<?= $gender ?>">
+                    <?= $gender ?>
+                </label>
+            <?php } ?>
+        </div>
+
+        <div class="form-group">
+            <label>Sở thích:</label>
+            <?php foreach ($hobbies as $key => $hobby) { ?>
+                <label class="option">
+                    <input type="checkbox" name="hobbies[]" value="<?= $key ?>">
+                    <?= $hobby ?>
+                </label>
+            <?php } ?>
+        </div>
+
+        <button type="submit" name="submit">Đăng ký</button>
+        <button type="reset">Làm mới</button>
+
+    </form>
+
+</section>
+   
 </body>
 </html>
